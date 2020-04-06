@@ -3,6 +3,8 @@
 #include <mutex>
 #include <condition_variable>
 #include "queues.h"
+#include "PTask.h"
+
 
 template <typename T>
 LockingQueue<T>::LockingQueue(){
@@ -28,3 +30,4 @@ T LockingQueue<T>::dequeue(){
 
 
 template class LockingQueue<int>;
+template class LockingQueue<PTask<int, int>*>;
