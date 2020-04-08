@@ -10,8 +10,8 @@ public:
 
 
 static void divide(const PTask<int, int> &in, std::vector<PTask<int, int> *> *out){
-    out->push_back(new PTask<int, int>(*(in.input)-1));
-    out->push_back(new PTask<int, int>(*(in.input)-2));
+    out->push_back(new PTask<int, int>(new int((*in.input)-1)));
+    out->push_back(new PTask<int, int>(new int((*in.input)-2)));
 };
 
 static void combine(std::vector<PTask<int, int> *> &in, PTask<int, int> *out){

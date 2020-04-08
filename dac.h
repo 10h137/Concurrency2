@@ -54,7 +54,7 @@ public:
         else
         {
             std::vector<PTask<I, O> *> division;
-            divide(in, &division);
+            divide(&in, &division);
             for (size_t i = 0; i < division.size(); i++)
             {
                 parent->dependencies.push_back(division[i]);
@@ -178,14 +178,14 @@ public:
     void run(I &in, O &result)
     {
         std::vector<PTask<I, O> *> tasks;
-        PTask<I, O> *first_task = new PTask<I, O>(in);
+        PTask<I, O> *first_task = new PTask<I, O>(&in);
         tasks.push_back(first_task);
         getTasks(&tasks, first_task);
         processTasks(tasks);
         result = *(first_task->output.load());
-        // cout << "\nRESULT: " << result << endl;
-        for(int i = 0; i < result.size(); i++){
-            cout << result[i];
-        }
+        cout << "\nRESULT: " << result << endl;
+        // for(int i = 0; i < result.size(); i++){
+        //     cout << result[i];
+        // }
     }
 };

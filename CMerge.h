@@ -13,6 +13,7 @@ public:
     static void divide(const PTask<std::vector<int>, std::vector<int> > &in, std::vector<PTask<std::vector<int>, std::vector<int> > *> *out)
     {
         int mid = (in.input->size() - 1) / 2;
+        cout << "uu";
         PTask<std::vector<int>, std::vector<int> > *left = new PTask<std::vector<int>, std::vector<int> >;
         PTask<std::vector<int>, std::vector<int> > *right = new PTask<std::vector<int>, std::vector<int> >;
 
@@ -24,13 +25,15 @@ public:
 
         out->push_back(left);
         out->push_back(right);
+        cout << "kk";
     };
 
     static void combine(std::vector<PTask<std::vector<int>, std::vector<int> > *> &in, PTask<std::vector<int>, std::vector<int> > *out)
     {
-        std::vector<int> *arr;
         std::vector<int> *L = in[0]->output;
         std::vector<int> *R = in[1]->output;
+        std::vector<int> *arr = (std::vector<int>*) malloc(sizeof(int)* sizeof(L->size()+R->size()));
+
 
         int l_index = 0;
         int r_index = 0;

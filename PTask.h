@@ -12,8 +12,8 @@ struct PTask
 
     PTask(){}
 
-    PTask(const I in){
-        input = new I(in); 
+    PTask( I *in){
+        input = in; 
     }
     
 };
