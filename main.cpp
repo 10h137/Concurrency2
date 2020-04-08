@@ -1,19 +1,16 @@
-#include "dac.h"
+#include "DAC.h"
 #include "CFib.h"
+#include "CMerge.h"
 
-static void run(){
-    int in = 10;
+#include <cstdlib>
+
+
+int main(int argc, const char *argv[])
+{
+    int in = atoi(argv[1]);
     int out;
-    DAC<int,int> *d = new DAC<int,int>(&CFib::divide,&CFib::combine, &CFib::base, &CFib::threshold, 4);
-    (*d).run(in, out);
+    std::vector<int> output;
+static const int arr[] = {16,2,4,7,2,4,9,0,7,5,3,77,29};
+vector<int> input (arr, arr + sizeof(arr) / sizeof(arr[0]) );    DAC<std::vector<int>, std::vector<int> > *d = new DAC<std::vector<int>, std::vector<int> >(&CMerge::divide, &CMerge::combine, &CMerge::base, &CMerge::threshold, atoi(argv[2]));
+    (*d).run(input, output);
 };
-
-int main( int argc, const char* argv[] ){
-
-run();
-    
-};
-
-
-
-

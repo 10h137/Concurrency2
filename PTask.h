@@ -2,30 +2,22 @@
 #define Included_NameModel_H
 #include <vector>
 
-
-
-
-// Existing code goes here
-
-
-
-
 template <typename I, typename O>
 struct PTask
 {
     public:
     std::vector<PTask<I, O> *> dependencies;
-    I input;
-    O output;
+    I* input;
+    std::atomic<O*> output;
 
+    PTask(){}
 
     PTask(const I in){
-        input = in; 
+        input = new I(in); 
     }
-
-    // ~PTask(){
-    //     delete(output);
-    // }
     
 };
+
+template class PTask<int,int>;
+
 #endif 
